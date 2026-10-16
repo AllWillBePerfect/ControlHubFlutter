@@ -106,6 +106,7 @@ _OptionApiModel _$OptionApiModelFromJson(Map<String, dynamic> json) =>
     _OptionApiModel(
       id: json['id'] as String,
       title: json['title'] as String,
+      defaultTitle: json['defaultTitle'] as String?,
       hidden: json['hidden'] as bool? ?? false,
     );
 
@@ -113,6 +114,7 @@ Map<String, dynamic> _$OptionApiModelToJson(_OptionApiModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'defaultTitle': instance.defaultTitle,
       'hidden': instance.hidden,
     };
 

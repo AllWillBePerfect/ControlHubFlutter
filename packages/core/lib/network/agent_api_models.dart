@@ -56,6 +56,7 @@ abstract class OptionApiModel with _$OptionApiModel {
   const factory OptionApiModel({
     required String id,
     required String title,
+    String? defaultTitle,
     @Default(false) bool hidden,
   }) = _OptionApiModel;
 

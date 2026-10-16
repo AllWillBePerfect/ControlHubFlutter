@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 
-Future<String?> showRenameDialog(BuildContext context, String current) =>
+Future<String?> showRenameDialog(
+    BuildContext context, {
+      required String current,
+      String? hint,
+    }) =>
     showDialog<String>(
       context: context,
-      builder: (_) => _RenameDialog(current: current),
+      builder: (_) => _RenameDialog(current: current, hint: hint),
     );
 
 class _RenameDialog extends StatefulWidget {
-  const _RenameDialog({required this.current});
+  const _RenameDialog({required this.current, this.hint});
 
   final String current;
+  final String? hint;
 
   @override
   State<_RenameDialog> createState() => _RenameDialogState();
@@ -34,7 +39,8 @@ class _RenameDialogState extends State<_RenameDialog> {
         controller: _controller,
         autofocus: true,
         maxLength: 40,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
+          hintText: widget.hint,
           helperText: 'Оставьте пустым, чтобы вернуть исходное имя',
         ),
         onSubmitted: (_) => _submit(),

@@ -6,11 +6,22 @@ sealed class Capability {
 }
 
 final class CapabilityOption {
-  const CapabilityOption({required this.id, required this.title, this.hidden = false});
+  const CapabilityOption({
+    required this.id,
+    required this.title,
+    this.defaultTitle,
+    this.hidden = false,
+  });
 
   final String id;
   final String title;
+  final String? defaultTitle;
   final bool hidden;
+
+  String? get originalTitle =>
+      defaultTitle != null && defaultTitle != title ? defaultTitle : null;
+
+  String get customTitle => title == defaultTitle ? '' : title;
 }
 
 final class SelectorCapability extends Capability {

@@ -874,7 +874,7 @@ as double?,
 /// @nodoc
 mixin _$OptionApiModel {
 
- String get id; String get title; bool get hidden;
+ String get id; String get title; String? get defaultTitle; bool get hidden;
 /// Create a copy of OptionApiModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -888,20 +888,20 @@ $OptionApiModelCopyWith<OptionApiModel> get copyWith => _$OptionApiModelCopyWith
 @override
 bool operator ==(Object other) {
   final _this = this as OptionApiModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OptionApiModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.hidden, _this.hidden) || other.hidden == _this.hidden));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OptionApiModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.defaultTitle, _this.defaultTitle) || other.defaultTitle == _this.defaultTitle)&&(identical(other.hidden, _this.hidden) || other.hidden == _this.hidden));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as OptionApiModel;
-  return Object.hash(runtimeType,_this.id,_this.title,_this.hidden);
+  return Object.hash(runtimeType,_this.id,_this.title,_this.defaultTitle,_this.hidden);
 }
 
 @override
 String toString() {
   final _this = this as OptionApiModel;
-  return 'OptionApiModel(id: ${_this.id}, title: ${_this.title}, hidden: ${_this.hidden})';
+  return 'OptionApiModel(id: ${_this.id}, title: ${_this.title}, defaultTitle: ${_this.defaultTitle}, hidden: ${_this.hidden})';
 }
 
 
@@ -912,7 +912,7 @@ abstract mixin class $OptionApiModelCopyWith<$Res>  {
   factory $OptionApiModelCopyWith(OptionApiModel value, $Res Function(OptionApiModel) _then) = _$OptionApiModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String title, bool hidden
+ String id, String title, String? defaultTitle, bool hidden
 });
 
 
@@ -929,11 +929,12 @@ class _$OptionApiModelCopyWithImpl<$Res>
 
 /// Create a copy of OptionApiModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? hidden = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? defaultTitle = freezed,Object? hidden = null,}) {
   return _then(OptionApiModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String,hidden: null == hidden ? _self.hidden : hidden // ignore: cast_nullable_to_non_nullable
+as String,defaultTitle: freezed == defaultTitle ? _self.defaultTitle : defaultTitle // ignore: cast_nullable_to_non_nullable
+as String?,hidden: null == hidden ? _self.hidden : hidden // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -1019,10 +1020,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String title,  bool hidden)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String title,  String? defaultTitle,  bool hidden)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OptionApiModel() when $default != null:
-return $default(_that.id,_that.title,_that.hidden);case _:
+return $default(_that.id,_that.title,_that.defaultTitle,_that.hidden);case _:
   return orElse();
 
 }
@@ -1040,10 +1041,10 @@ return $default(_that.id,_that.title,_that.hidden);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String title,  bool hidden)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String title,  String? defaultTitle,  bool hidden)  $default,) {final _that = this;
 switch (_that) {
 case _OptionApiModel():
-return $default(_that.id,_that.title,_that.hidden);case _:
+return $default(_that.id,_that.title,_that.defaultTitle,_that.hidden);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1060,10 +1061,10 @@ return $default(_that.id,_that.title,_that.hidden);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String title,  bool hidden)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String title,  String? defaultTitle,  bool hidden)?  $default,) {final _that = this;
 switch (_that) {
 case _OptionApiModel() when $default != null:
-return $default(_that.id,_that.title,_that.hidden);case _:
+return $default(_that.id,_that.title,_that.defaultTitle,_that.hidden);case _:
   return null;
 
 }
@@ -1075,11 +1076,12 @@ return $default(_that.id,_that.title,_that.hidden);case _:
 @JsonSerializable()
 
 class _OptionApiModel implements OptionApiModel {
-  const _OptionApiModel({required this.id, required this.title, this.hidden = false});
+  const _OptionApiModel({required this.id, required this.title, this.defaultTitle, this.hidden = false});
   factory _OptionApiModel.fromJson(Map<String, dynamic> json) => _$OptionApiModelFromJson(json);
 
 @override final  String id;
 @override final  String title;
+@override final  String? defaultTitle;
 @override@JsonKey() final  bool hidden;
 
 /// Create a copy of OptionApiModel
@@ -1095,18 +1097,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OptionApiModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.hidden, hidden) || other.hidden == hidden));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OptionApiModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.defaultTitle, defaultTitle) || other.defaultTitle == defaultTitle)&&(identical(other.hidden, hidden) || other.hidden == hidden));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,title,hidden);
+    return Object.hash(runtimeType,id,title,defaultTitle,hidden);
 }
 
 @override
 String toString() {
-    return 'OptionApiModel(id: $id, title: $title, hidden: $hidden)';
+    return 'OptionApiModel(id: $id, title: $title, defaultTitle: $defaultTitle, hidden: $hidden)';
 }
 
 
@@ -1117,7 +1119,7 @@ abstract mixin class _$OptionApiModelCopyWith<$Res> implements $OptionApiModelCo
   factory _$OptionApiModelCopyWith(_OptionApiModel value, $Res Function(_OptionApiModel) _then) = __$OptionApiModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String title, bool hidden
+ String id, String title, String? defaultTitle, bool hidden
 });
 
 
@@ -1134,11 +1136,12 @@ class __$OptionApiModelCopyWithImpl<$Res>
 
 /// Create a copy of OptionApiModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? hidden = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? defaultTitle = freezed,Object? hidden = null,}) {
   return _then(_OptionApiModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String,hidden: null == hidden ? _self.hidden : hidden // ignore: cast_nullable_to_non_nullable
+as String,defaultTitle: freezed == defaultTitle ? _self.defaultTitle : defaultTitle // ignore: cast_nullable_to_non_nullable
+as String?,hidden: null == hidden ? _self.hidden : hidden // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
