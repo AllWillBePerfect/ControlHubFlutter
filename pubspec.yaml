@@ -1,0 +1,13 @@
+name: control_hub_workspace
+publish_to: none
+
+environment:
+  sdk: ^3.13.5
+
+workspace:
+  - app
+  - packages/core
+  - packages/features/hub/hub_api
+  - packages/features/hub/hub_impl
+  - packages/features/sources/sources_api
+  - packages/features/sources/sources_impl

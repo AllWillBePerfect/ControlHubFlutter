@@ -1,0 +1,17 @@
+name: hub_impl
+publish_to: none
+environment:
+  sdk: ^3.13.5
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  core:
+    path: ../../../core
+  hub_api:
+    path: ../hub_api
+  sources_api:
+    path: ../../sources/sources_api
+  flutter_riverpod: ^3.4.3
+  go_router: ^18.1.0

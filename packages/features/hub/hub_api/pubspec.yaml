@@ -1,0 +1,12 @@
+name: hub_api
+publish_to: none
+environment:
+  sdk: ^3.13.5
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  core:
+    path: ../../../core
+  flutter_riverpod: ^3.4.3
