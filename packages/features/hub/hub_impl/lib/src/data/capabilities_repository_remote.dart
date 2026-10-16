@@ -51,10 +51,15 @@ class CapabilitiesRepositoryRemote implements CapabilitiesRepository {
         SelectorApiModel m => SelectorCapability(
             id: m.id,
             title: m.title,
-            options: [
-              for (final o in m.options)
-                CapabilityOption(id: o.id, title: o.title, hidden: o.hidden),
-            ],
+          options: [
+            for (final o in m.options)
+              CapabilityOption(
+                id: o.id,
+                title: o.title,
+                defaultTitle: o.defaultTitle,
+                hidden: o.hidden,
+              ),
+          ],
             selectedId: m.selectedId,
           ),
         GaugeApiModel m => GaugeCapability(

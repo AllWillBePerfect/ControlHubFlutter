@@ -48,12 +48,16 @@ class SelectorOptionsSheet extends StatelessWidget {
                     onPressed: () => onSetHidden(option.id, !option.hidden),
                   ),
                   title: Text(option.title),
-                  subtitle: option.hidden ? const Text('Скрыт') : null,
+                  subtitle: option.originalTitle == null ? null : Text(option.originalTitle!),
                   trailing: IconButton(
                     tooltip: 'Переименовать',
                     icon: const Icon(Icons.edit_outlined),
                     onPressed: () async {
-                      final title = await showRenameDialog(context, option.title);
+                      final title = await showRenameDialog(
+                        context,
+                        current: option.customTitle,
+                        hint: option.defaultTitle,
+                      );
                       if (title != null) onRename(option.id, title);
                     },
                   ),
