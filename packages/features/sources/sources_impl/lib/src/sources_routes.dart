@@ -27,7 +27,7 @@ GoRoute(
   builder: (context, state) => ViewModelScope(
     create: () => AddSourceViewModel(
       sourcesRepository: _repository(context),
-      discovery: AgentDiscoveryService(discoveryPort: 8771),
+      discovery: AgentDiscoveryService(),
     ),
     builder: (context, vm) => AddSourceScreen(viewModel: vm),
   ),

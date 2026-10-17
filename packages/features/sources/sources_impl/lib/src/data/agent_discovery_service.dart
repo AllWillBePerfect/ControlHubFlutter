@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:core/network/agent_protocol.dart';
 import 'package:core/utils/result.dart';
 
 class DiscoveredAgent {
@@ -14,7 +15,7 @@ class DiscoveredAgent {
 
 class AgentDiscoveryService {
   AgentDiscoveryService({
-    this.discoveryPort = 8771,
+    this.discoveryPort = AgentProtocol.discoveryPort,
     this.timeout = const Duration(seconds: 2),
   });
 

@@ -1,3 +1,4 @@
+import 'package:core/network/agent_protocol.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,7 +19,7 @@ class _AddSourceScreenState extends State<AddSourceScreen> {
   final _formKey = GlobalKey<FormState>();
   final _name = TextEditingController();
   final _host = TextEditingController();
-  final _port = TextEditingController(text: '8765');
+  final _port = TextEditingController(text: '${AgentProtocol.httpPort}');
   final _token = TextEditingController();
 
   @override
