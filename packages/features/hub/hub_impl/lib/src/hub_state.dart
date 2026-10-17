@@ -18,6 +18,7 @@ class SourceSection {
 
   bool get hasCapabilities => capabilities.isNotEmpty;
   bool get hasFailure => failure != null;
+  bool get isOnline => failure == null;
 
   SourceSection replace(Capability updated) => SourceSection(
         source: source,

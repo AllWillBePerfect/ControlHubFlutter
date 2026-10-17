@@ -28,7 +28,13 @@ class SourceSectionView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(source.name, style: theme.textTheme.titleLarge),
+        Row(
+  children: [
+    _StatusDot(online: section.isOnline),
+    const SizedBox(width: 8),
+    Expanded(child: Text(source.name, style: theme.textTheme.titleLarge)),
+  ],
+),
         Text('${source.host}:${source.port}', style: theme.textTheme.bodySmall),
         if (failure != null)
           Container(
@@ -56,6 +62,25 @@ class SourceSectionView extends StatelessWidget {
             ),
           ),
       ],
+    );
+  }
+}
+
+class _StatusDot extends StatelessWidget {
+  const _StatusDot({required this.online});
+
+  final bool online;
+
+  @override
+  Widget build(BuildContext context) {
+    final color = online ? Colors.green : Theme.of(context).colorScheme.error;
+    return Tooltip(
+      message: online ? 'На связи' : 'Нет связи',
+      child: Container(
+        width: 10,
+        height: 10,
+        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      ),
     );
   }
 }

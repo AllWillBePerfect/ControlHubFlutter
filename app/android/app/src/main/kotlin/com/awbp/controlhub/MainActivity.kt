@@ -1,4 +1,4 @@
-package com.example.control_hub
+package com.awbp.controlhub
 
 import io.flutter.embedding.android.FlutterActivity
 
